@@ -177,6 +177,10 @@ create trigger on_auth_user_created
   after insert on auth.users
   for each row execute procedure public.handle_new_user();
 
+create or replace function public.owns_student(p_student uuid)
+returns boolean language sql stable security definer set search_path=public
+as $$ select exists(select 1 from public.students s where s.id=p_student and s.profile_id=auth.uid()); $$;
+
 create or replace function public.current_role()
 returns public.app_role
 language sql stable security definer set search_path = public
@@ -228,7 +232,7 @@ drop policy if exists profiles_self on public.profiles;
 create policy profiles_self on public.profiles for select using (id=auth.uid() or public.is_management());
 
 drop policy if exists profiles_update_self on public.profiles;
-create policy profiles_update_self on public.profiles for update using (id=auth.uid());
+-- Role changes are not allowed from the browser.
 
 drop policy if exists sections_read on public.sections;
 create policy sections_read on public.sections for select using (auth.uid() is not null);
@@ -265,14 +269,14 @@ create policy attendance_read on public.attendance for select using (public.can_
 
 drop policy if exists attendance_student_insert on public.attendance;
 create policy attendance_student_insert on public.attendance for insert with check (
-  exists(select 1 from public.students s where s.id=student_id and s.profile_id=auth.uid())
+  public.owns_student(student_id)
 );
 
 drop policy if exists attendance_student_update on public.attendance;
 create policy attendance_student_update on public.attendance for update using (
-  exists(select 1 from public.students s where s.id=student_id and s.profile_id=auth.uid())
+  public.owns_student(student_id)
 ) with check (
-  exists(select 1 from public.students s where s.id=student_id and s.profile_id=auth.uid())
+  public.owns_student(student_id)
 );
 
 drop policy if exists attendance_staff_manage on public.attendance;
@@ -289,9 +293,9 @@ create policy videos_staff_delete on public.learning_videos for delete using (pu
 
 drop policy if exists progress_self on public.learning_progress;
 create policy progress_self on public.learning_progress for all using (
-  exists(select 1 from public.students s where s.id=student_id and s.profile_id=auth.uid())
+  public.owns_student(student_id)
 ) with check (
-  exists(select 1 from public.students s where s.id=student_id and s.profile_id=auth.uid())
+  public.owns_student(student_id)
 );
 
 drop policy if exists progress_staff_read on public.learning_progress;
@@ -302,7 +306,7 @@ create policy requests_read on public.requests for select using (public.can_see_
 
 drop policy if exists requests_student_insert on public.requests;
 create policy requests_student_insert on public.requests for insert with check (
-  exists(select 1 from public.students s where s.id=student_id and s.profile_id=auth.uid())
+  public.owns_student(student_id)
 );
 
 drop policy if exists requests_manage on public.requests;

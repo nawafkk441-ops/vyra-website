@@ -27,25 +27,54 @@
 .home-hero{padding:62px 0 26px;display:block;text-align:center}.home-hero .eyebrow{margin:auto}.home-hero h1{font-size:clamp(42px,6vw,68px);margin:22px 0 14px}.home-hero p{max-width:760px;margin:0 auto;color:var(--muted);font-size:17px;line-height:1.8}.role-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin:28px 0 64px}.role-card{padding:22px 18px;text-align:left;border:1px solid var(--line);border-radius:20px;background:linear-gradient(155deg,rgba(255,255,255,.055),rgba(255,255,255,.018));display:flex;flex-direction:column;min-height:235px}.role-card .role-icon{width:45px;height:45px;border-radius:14px;display:grid;place-items:center;background:rgba(117,87,255,.16);color:#c7bcff;font-size:22px;margin-bottom:18px}.role-card h3{font-size:16px;margin:0 0 8px}.role-card p{font-size:12px;line-height:1.65;color:var(--muted);margin:0 0 18px}.role-card .btn{margin-top:auto;width:100%}.role-card.supervisor .role-icon{background:rgba(93,225,230,.12);color:var(--aqua)}.role-card.student .role-icon{background:rgba(243,212,90,.12);color:var(--yellow)}.role-card.preceptor .role-icon{background:rgba(113,227,168,.12);color:var(--green)}.role-card.ci .role-icon{background:rgba(255,122,145,.12);color:#ff9eb0}.role-caption{font-size:11px;color:var(--muted);margin-top:-45px;margin-bottom:45px;text-align:center}.form-help{padding:11px 12px;border:1px solid rgba(243,212,90,.18);background:rgba(243,212,90,.06);border-radius:12px;color:#d7cb8b;font-size:11px;line-height:1.55;margin:12px 0}.student-portal{display:none}.student-portal.active{display:block}.student-nav{display:flex;gap:8px;flex-wrap:wrap;margin:16px 0}.student-nav button{font-size:11px}.student-nav button.active{background:linear-gradient(135deg,var(--violet),#8e72ff)}.student-page{display:none}.student-page.active{display:grid;gap:14px}.student-page .ci-kpis{grid-template-columns:repeat(3,minmax(0,1fr))}.student-schedule{min-width:720px}.student-action-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.student-action{padding:16px;border:1px solid var(--line);border-radius:15px;background:rgba(255,255,255,.025)}.student-action h3{font-size:12px;margin:0 0 7px}.student-action p{font-size:10px;color:var(--muted);line-height:1.5;margin:0 0 12px}.form-control{width:100%;padding:11px 12px;border-radius:10px;border:1px solid var(--line);background:#0b1730;color:white;margin:5px 0 10px;font:inherit;font-size:12px}.evaluation-list{display:grid;gap:10px}.evaluation-item{border:1px solid var(--line);border-radius:12px;padding:13px}.evaluation-item p{font-size:11px;color:var(--muted);margin:6px 0}.role-hidden{display:none!important}
 @media(max-width:900px){.role-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.ci-app{grid-template-columns:190px minmax(0,1fr)}.ci-kpis{grid-template-columns:repeat(2,minmax(0,1fr))}.student-action-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:620px){.nav{padding:13px 16px}.links{display:none}.container{padding:0 16px}.home-hero{padding:42px 0 20px}.home-hero p{font-size:14px}.role-grid{grid-template-columns:1fr;margin-bottom:50px}.role-card{min-height:auto}.ci-app{display:block;border-radius:16px}.ci-sidebar{display:none}.ci-content{padding:12px}.ci-topbar{padding:15px;align-items:flex-start;flex-direction:column}.ci-kpis,.student-page .ci-kpis{grid-template-columns:repeat(2,minmax(0,1fr))}.ci-panel-grid,.learning-grid{grid-template-columns:1fr}.quick-grid{grid-template-columns:repeat(2,1fr)}.student-action-grid{grid-template-columns:1fr}.modalbox{padding:18px}}
+
+/* Animated VYRA landing */
+.brand-logo-link{display:inline-flex;align-items:center;gap:12px;cursor:pointer}
+.animated-logo{animation:vyraFloat 3.6s ease-in-out infinite,vyraGlow 2.8s ease-in-out infinite;transition:transform .25s ease,filter .25s ease}
+.brand-logo-link:hover .animated-logo{transform:scale(1.08) rotate(-2deg);filter:brightness(1.12)}
+@keyframes vyraFloat{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(-4px) rotate(1deg)}}
+@keyframes vyraGlow{0%,100%{box-shadow:0 12px 30px rgba(117,87,255,.22)}50%{box-shadow:0 18px 45px rgba(93,225,230,.26)}}
+.hero-copy-anim{display:inline-block;min-height:1.2em;background:linear-gradient(90deg,#fff,#a6d6ff,#c6baff,#fff);background-size:300% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:shine 5s ease-in-out infinite}
+@keyframes shine{0%,100%{background-position:0 50%}50%{background-position:100% 50%}}
+.animated-blurb{max-width:780px;margin:0 auto;color:var(--muted);font-size:16px;line-height:1.9;min-height:3.8em;animation:fadeUp .7s ease both}
+.animated-blurb .blurb-text{display:inline-block;animation:blurbIn .8s ease both}
+@keyframes blurbIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+.role-launch{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin:30px 0 14px}
+.role-launch .btn{min-width:180px}
+.role-choice-modal .modalbox{width:min(940px,100%);padding:26px}
+.role-choice-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-top:18px}
+.role-choice{padding:18px;border:1px solid var(--line);border-radius:17px;background:rgba(255,255,255,.035);text-align:left;cursor:pointer;transition:transform .2s ease,border-color .2s ease,background .2s ease}
+.role-choice:hover{transform:translateY(-3px);border-color:rgba(117,87,255,.42);background:rgba(117,87,255,.08)}
+.role-choice .role-icon{width:40px;height:40px;border-radius:12px;display:grid;place-items:center;background:rgba(117,87,255,.14);color:#c8beff;font-size:18px;margin-bottom:12px}
+.role-choice h4{margin:0 0 6px;font-size:13px}.role-choice p{margin:0;color:var(--muted);font-size:10px;line-height:1.55}
+.home-role-preview{display:none}
+@media(max-width:900px){.role-choice-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:620px){.role-choice-grid{grid-template-columns:1fr}.role-launch .btn{width:100%}}
 </style>
 </head>
 <body>
 <div class="shell">
-  <header class="top"><div class="nav"><a class="brand" href="#home"><span class="logo"></span><span>VYRA</span><small style="color:var(--muted);font-weight:600;letter-spacing:0">· KFMC</small></a><nav class="links"><a href="#home">Home</a></nav><button class="btn" onclick="openSignIn()">تسجيل الدخول</button></div></header>
+  <header class="top"><div class="nav"><button class="brand brand-logo-link" type="button" onclick="openRoleChoices()" aria-label="Open VYRA registration options"><span class="logo animated-logo"></span><span>VYRA</span><small style="color:var(--muted);font-weight:600;letter-spacing:0">· KFMC</small></button><nav class="links"><a href="#home">Home</a></nav><button class="btn" onclick="openSignIn()">Sign in</button></div></header>
   <main>
     <section id="home" class="home-hero container">
       <span class="eyebrow">VYRA · KFMC CLINICAL TRAINING</span>
-      <h1>VYRA <span style="background:linear-gradient(90deg,#fff,#a6d6ff);-webkit-background-clip:text;background-clip:text;color:transparent">Clinical Placement</span></h1>
-      <p>منصة لتنظيم التدريب السريري لطلاب التمريض في مدينة الملك فهد الطبية؛ تجمع الجداول والحضور والانصراف والتعلم والتواصل والتقييمات في مكان واحد، مع صلاحيات مختلفة حسب دور كل مستخدم.</p>
-    </section>
-    <section class="container">
-      <div class="role-grid">
-        <article class="role-card student"><div class="role-icon">♙</div><h3>تسجيل طالب</h3><p>الوصول إلى جدولك، تسجيل الحضور والانصراف، تقديم أعذار الغياب والإجازات، التعلم والتواصل مع CI وتقييم تجربة القسم والـ Preceptor.</p><button class="btn primary" onclick="openRegistration('Student')">تسجيل طالب</button></article>
-        <article class="role-card preceptor"><div class="role-icon">✚</div><h3>تسجيل Preceptor</h3><p>طلب حساب مشرف سريري لمتابعة الطلاب المكلف بهم، وتحديث تقدم التعلم وإرسال الملاحظات المهنية.</p><button class="btn primary" onclick="openRegistration('Preceptor')">طلب تسجيل Preceptor</button></article>
-        <article class="role-card supervisor"><div class="role-icon">⌂</div><h3>تسجيل مشرف القسم</h3><p>طلب صلاحية لإدارة طلاب القسم والـ CI والـ Preceptors، ومراجعة الحضور والطلبات والتقييمات والتقارير.</p><button class="btn primary" onclick="openRegistration('Department Supervisor')">طلب تسجيل مشرف القسم</button></article>
-        <article class="role-card ci"><div class="role-icon">▦</div><h3>تسجيل CI</h3><p>طلب حساب Clinical Instructor لمتابعة جميع الطلاب المكلف بهم عبر الأقسام، والجداول والحضور والتعلم والطلبات والتقييمات.</p><button class="btn primary" onclick="openRegistration('CI')">طلب تسجيل CI</button></article>
+      <h1>VYRA <span class="hero-copy-anim">Clinical Placement</span></h1>
+      <div class="animated-blurb"><span id="blurbText" class="blurb-text">A focused clinical placement platform that connects students, Preceptors, Clinical Instructors, and Department Supervisors through one clear training experience.</span></div>
+      <div class="role-launch">
+        <button class="btn primary" onclick="openRoleChoices()">Explore registration options</button>
+        <button class="btn" onclick="scrollToId('homeFeatures')">Discover VYRA</button>
       </div>
-      <p class="role-caption">لأمان الحسابات: تسجيل CI وPreceptor ومشرف القسم يحتاج إثباتًا وموافقة إدارية قبل تفعيل الصلاحيات.</p>
+      <p class="note">Click the animated VYRA logo or the button above to choose a registration role.</p>
+    </section>
+    <section id="homeFeatures" class="container">
+      <div class="role-grid home-role-preview" id="rolePreview">
+        <article class="role-card student"><div class="role-icon">♙</div><h3>Student Registration</h3><p>Access your schedule, check-in/check-out, absence excuses, leave requests, learning, CI communication, and placement feedback.</p><button class="btn primary" onclick="openRegistration('Student')">Register as Student</button></article>
+        <article class="role-card preceptor"><div class="role-icon">✚</div><h3>Preceptor Registration</h3><p>Request verified Preceptor access to support assigned students and contribute to learning follow-up.</p><button class="btn primary" onclick="openRegistration('Preceptor')">Register as Preceptor</button></article>
+        <article class="role-card supervisor"><div class="role-icon">⌂</div><h3>Department Supervisor</h3><p>Request verified access to oversee department students, CI and Preceptor activity, requests, evaluations, and reports.</p><button class="btn primary" onclick="openRegistration('Department Supervisor')">Register as Supervisor</button></article>
+        <article class="role-card ci"><div class="role-icon">▦</div><h3>Clinical Instructor · CI</h3><p>Request verified CI access to follow assigned students across units, schedules, attendance, learning, requests, and evaluations.</p><button class="btn primary" onclick="openRegistration('CI')">Register as CI</button></article>
+      </div>
+      <p class="role-caption" id="rolePreviewNote" style="display:none">Professional roles require verification and approval before role-based permissions are activated.</p>
     </section>
 <section id="workspace" class="section container workspace">
   <div id="studentPortal" class="student-portal">
@@ -135,7 +164,13 @@
   </main>
   <footer class="foot"><div class="container">VYRA · KFMC — Website prototype. Source unit names and locations are preserved from the supplied spreadsheet. Missing source locations are shown as “Not specified in source file”.</div></footer>
 </div>
-<div id="loginModal" class="modal"><div class="modalbox"><button class="close" onclick="closeLogin()">×</button><div class="eyebrow">VYRA · KFMC</div><h3 id="loginHeading" style="margin-top:14px">تسجيل طالب</h3><p class="note" id="loginSubtext">أدخل بياناتك لبدء التسجيل.</p>
+<div id="roleChoiceModal" class="modal role-choice-modal"><div class="modalbox"><button class="close" onclick="closeRoleChoices()">×</button><div class="eyebrow">VYRA · KFMC</div><h3 style="margin-top:14px">Choose your registration path</h3><p class="note">Select the role that matches your verified position or training status.</p><div class="role-choice-grid">
+  <button class="role-choice" onclick="closeRoleChoices();openRegistration('Student')"><div class="role-icon">♙</div><h4>Student</h4><p>Student training portal and placement tools.</p></button>
+  <button class="role-choice" onclick="closeRoleChoices();openRegistration('Preceptor')"><div class="role-icon">✚</div><h4>Preceptor</h4><p>Verified clinical support for assigned students.</p></button>
+  <button class="role-choice" onclick="closeRoleChoices();openRegistration('Department Supervisor')"><div class="role-icon">⌂</div><h4>Department Supervisor</h4><p>Department-level oversight and review.</p></button>
+  <button class="role-choice" onclick="closeRoleChoices();openRegistration('CI')"><div class="role-icon">▦</div><h4>Clinical Instructor · CI</h4><p>Student, schedule, attendance, learning and evaluation oversight.</p></button>
+</div><div class="note" style="margin-top:16px">Verified staff roles require a work ID and supporting evidence during registration.</div></div></div>
+<div id="loginModal" class="modal"><div class="modalbox"><button class="close" onclick="closeLogin()">×</button><div class="eyebrow">VYRA · KFMC</div><h3 id="loginHeading" style="margin-top:14px">Student registration</h3><p class="note" id="loginSubtext">أدخل بياناتك لبدء التسجيل.</p>
   <div class="field"><label>الاسم الكامل</label><input id="loginName" placeholder="الاسم الكامل" autocomplete="name"></div>
   <div class="field"><label>البريد الإلكتروني</label><input id="email" type="email" placeholder="name@example.com" autocomplete="email"></div>
   <div class="field"><label>كلمة المرور</label><input id="password" type="password" placeholder="كلمة المرور" autocomplete="new-password"></div>
@@ -144,7 +179,7 @@
   <div class="field hidden" id="proofField"><label>إثبات الصفة الوظيفية</label><input id="proofInput" type="file" accept=".pdf,image/*"><small class="note">ارفق بطاقة العمل أو خطاب التكليف. لن تُفعّل الصلاحيات حتى تتم مراجعة الإثبات.</small></div>
   <div id="registrationSecurityNote" class="form-help">لا تختَر دورًا إداريًا لمجرد فتح لوحة التحكم. الحسابات المهنية تتطلب إثباتًا وموافقة.</div>
   <button class="btn primary" id="authSubmit" style="width:100%;margin-top:4px" onclick="submitAuth()">إنشاء طلب التسجيل</button>
-  <button class="btn" id="authModeToggle" style="width:100%;margin-top:9px" onclick="switchAuthMode()">لدي حساب بالفعل · تسجيل الدخول</button>
+  <button class="btn" id="authModeToggle" style="width:100%;margin-top:9px" onclick="switchAuthMode()">لدي حساب بالفعل · Sign in</button>
   <button class="btn" id="previewButton" style="width:100%;margin-top:9px" onclick="previewSelectedRole()">معاينة الواجهة فقط (بيانات تجريبية)</button>
   <div class="note" style="margin-top:12px">نسخة GitHub Pages الحالية للعرض فقط. لا يتم حفظ كلمة المرور، والتحقق الحقيقي من الهوية والصلاحيات يحتاج ربط قاعدة بيانات ومصادقة آمنة.</div>
 </div></div><div id="toast" class="toast"></div>
@@ -153,11 +188,13 @@ const DATA={"units": [{"unit": "Administration", "section": "Ambulatory Care Nur
 const esc=s=>String(s??'').replace(/[&<>\"]/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[m]));
 function scrollToId(id){document.getElementById(id).scrollIntoView({behavior:'smooth'});}
 let selectedRole='Student';let authMode='register';let currentDisplayName='Demo User';let currentStudentProfile=null;let studentOwnRequests=[];let studentMessages=[];let evaluations=[];let studentAttendance={in:null,out:null};let studentLearningDone=[false,false,false];let currentStudentId='VY-001';
+function openRoleChoices(){document.getElementById('roleChoiceModal').classList.add('show')}
+function closeRoleChoices(){document.getElementById('roleChoiceModal').classList.remove('show')}
 function openLogin(){selectedRole='Student';authMode='login';renderAuthForm();document.getElementById('loginModal').classList.add('show');setTimeout(()=>document.getElementById('email').focus(),50)}
 function openSignIn(){openLogin();}
 function openRegistration(role){selectedRole=role;authMode='register';renderAuthForm();document.getElementById('loginModal').classList.add('show');setTimeout(()=>document.getElementById('loginName').focus(),50)}
 function closeLogin(){document.getElementById('loginModal').classList.remove('show')}
-function renderAuthForm(){const labels={Student:'طالب',Preceptor:'Preceptor', 'Department Supervisor':'مشرف القسم',CI:'CI · Clinical Instructor'};document.getElementById('loginHeading').textContent=(authMode==='register'?'تسجيل ':'تسجيل دخول ')+labels[selectedRole];document.getElementById('loginSubtext').textContent=authMode==='register'?(selectedRole==='Student'?'أدخل بياناتك والرقم الجامعي لبدء التسجيل.':'أرسل طلب تفعيل حساب مهني؛ ستبقى الصلاحيات معلّقة حتى مراجعة الإثبات.'):'تسجيل الدخول للحساب المعتمد. الدور والصلاحيات يجب أن تكون محددة من الإدارة.';document.getElementById('studentIdField').classList.toggle('hidden',selectedRole!=='Student');document.getElementById('staffIdField').classList.toggle('hidden',selectedRole==='Student');document.getElementById('proofField').classList.toggle('hidden',selectedRole==='Student');document.getElementById('registrationSecurityNote').classList.toggle('hidden',authMode==='login');document.getElementById('authSubmit').textContent=authMode==='register'?(selectedRole==='Student'?'إنشاء حساب طالب':'إرسال طلب التفعيل'):'متابعة تسجيل الدخول';document.getElementById('authModeToggle').textContent=authMode==='register'?'لدي حساب بالفعل · تسجيل الدخول':'العودة إلى التسجيل';document.getElementById('previewButton').classList.toggle('hidden',authMode==='register');}
+function renderAuthForm(){const labels={Student:'طالب',Preceptor:'Preceptor', 'Department Supervisor':'مشرف القسم',CI:'CI · Clinical Instructor'};document.getElementById('loginHeading').textContent=(authMode==='register'?'تسجيل ':'تسجيل دخول ')+labels[selectedRole];document.getElementById('loginSubtext').textContent=authMode==='register'?(selectedRole==='Student'?'أدخل بياناتك والرقم الجامعي لبدء التسجيل.':'أرسل طلب تفعيل حساب مهني؛ ستبقى الصلاحيات معلّقة حتى مراجعة الإثبات.'):'Sign in للحساب المعتمد. الدور والصلاحيات يجب أن تكون محددة من الإدارة.';document.getElementById('studentIdField').classList.toggle('hidden',selectedRole!=='Student');document.getElementById('staffIdField').classList.toggle('hidden',selectedRole==='Student');document.getElementById('proofField').classList.toggle('hidden',selectedRole==='Student');document.getElementById('registrationSecurityNote').classList.toggle('hidden',authMode==='login');document.getElementById('authSubmit').textContent=authMode==='register'?(selectedRole==='Student'?'إنشاء حساب طالب':'إرسال طلب التفعيل'):'متابعة Sign in';document.getElementById('authModeToggle').textContent=authMode==='register'?'لدي حساب بالفعل · Sign in':'العودة إلى التسجيل';document.getElementById('previewButton').classList.toggle('hidden',authMode==='register');}
 function switchAuthMode(){authMode=authMode==='register'?'login':'register';renderAuthForm();}
 function submitAuth(){const name=document.getElementById('loginName').value.trim();const email=document.getElementById('email').value.trim().toLowerCase();const password=document.getElementById('password').value;if(!email||!password||!email.includes('@')){toast('أدخل بريدًا صحيحًا وكلمة مرور');return;}if(authMode==='login'){toast('لا يوجد تسجيل دخول حقيقي في نسخة GitHub Pages؛ استخدم المعاينة أو اربط المصادقة الآمنة.');return;}if(!name){toast('أدخل الاسم الكامل');return;}if(selectedRole==='Student'){const sid=document.getElementById('studentIdInput').value.trim();if(!sid){toast('أدخل الرقم الجامعي / التدريبي');return;}currentStudentId=sid;currentRole='Student';closeLogin();enterWorkspace(name);return;}const staffId=document.getElementById('staffIdInput').value.trim();const proof=document.getElementById('proofInput').files[0];if(!staffId||!proof){toast('الرقم الوظيفي وإثبات الصفة مطلوبان');return;}try{const pending=JSON.parse(localStorage.getItem('vyraPendingRoleRequests')||'[]');pending.push({name,email,role:selectedRole,staffId,proofName:proof.name,status:'Pending approval',submittedAt:new Date().toISOString()});localStorage.setItem('vyraPendingRoleRequests',JSON.stringify(pending));}catch(e){}closeLogin();toast('تم تسجيل طلبك محليًا كطلب معلّق؛ لا توجد صلاحيات حتى الموافقة');}
 function previewSelectedRole(){const email=document.getElementById('email').value.trim();const name=document.getElementById('loginName').value.trim()||'Demo User';if(!email||!email.includes('@')){toast('أدخل بريدًا تجريبيًا صحيحًا للمعاينة');return;}currentRole=selectedRole;currentStudentId=document.getElementById('studentIdInput').value.trim()||'VY-001';closeLogin();enterWorkspace(name);toast('معاينة واجهة فقط — لا توجد صلاحيات فعلية أو بيانات حقيقية');}
@@ -216,6 +253,14 @@ function renderReports(){const el=document.getElementById('reportSummary');if(!e
 
 function renderUnits(){const q=document.getElementById('unitSearch').value.trim().toLowerCase();const filter=document.getElementById('unitFilter').value;let arr=DATA.units.filter(x=>(filter==='all'||(filter==='admin'?x.admin:!x.admin)) && (!q||(`${x.unit} ${x.section} ${x.location||''}`).toLowerCase().includes(q)));document.getElementById('unitsGrid').innerHTML=arr.map(x=>`<div class="unit-card"><div class="unit-code">${esc(x.unit)}</div><h4>${esc(x.section)}</h4><p>Location: ${esc(x.location||'Not specified in source file')}</p></div>`).join('')||'<div class="card" style="grid-column:1/-1">No matching source rows.</div>';document.getElementById('unitCount').textContent=DATA.units.length;document.getElementById('statUnits').textContent=DATA.units.length;}
 function renderSchedule(){document.getElementById('scheduleBody').innerHTML=DATA.schedules.filter(s=>getVisibleStudents().some(v=>v.id===s.student.id)).map(s=>`<tr><td><strong>${esc(s.student.name)}</strong><div class="note">${esc(s.student.id)}</div></td><td><strong>${esc(s.student.section)}</strong><div class="note">${esc(s.student.unit)}</div></td>${s.entries.map(e=>`<td><span class="pill ${e.type.toLowerCase()}">${e.label}</span></td>`).join('')}</tr>`).join('')}
+const BLURBS=[
+"A focused clinical placement platform that connects students, Preceptors, Clinical Instructors, and Department Supervisors through one clear training experience.",
+"Plan clinical rotations, follow attendance, support learning, and keep placement communication organized.",
+"Built around the clinical placement journey: people, units, schedules, attendance, learning, requests, and feedback."
+];
+let blurbIndex=0;
+function rotateBlurb(){const el=document.getElementById('blurbText');if(!el)return;blurbIndex=(blurbIndex+1)%BLURBS.length;el.classList.remove('blurb-text');void el.offsetWidth;el.textContent=BLURBS[blurbIndex];el.classList.add('blurb-text');}
+setInterval(rotateBlurb,4200);
 renderUnits();
 </script>
 </body>

@@ -392,7 +392,7 @@ body>.shell{display:none}
     <div class="vpl-brand"><span class="logo animated-logo"></span><span>VYRA</span></div>
     <div class="vpl-nav-actions">
       <button class="btn" onclick="document.getElementById('vplRights')?.scrollIntoView({behavior:'smooth',block:'start'})">© Ownership</button>
-      <button class="btn" onclick="showInvestorDemo()">Investor Demo</button>
+      <button class="btn" onclick="openInvestorGate()">Investor Demo</button>
       <button class="btn" onclick="openVyraPublicContact()">Contact</button>
       <button class="btn primary" onclick="openProductFilm()">Start With Us</button>
     </div>
@@ -598,7 +598,18 @@ body>.shell{display:none}
   </div>
 </div>
 
-<div id="productFilmModal" class="product-film"><div class="film-box"><div class="film-head"><div><div class="film-overline">VYRA · THE STORY</div><h3>From disconnected tasks to one connected experience.</h3></div><button class="film-close" onclick="closeProductFilm()">×</button></div><div class="story-stage">
+<div id="investorGateModal" class="modal vpl-modal" aria-hidden="true">
+  <div class="modalbox">
+    <button class="close" onclick="closeInvestorGate()" aria-label="Close">×</button>
+    <div class="eyebrow">VYRA · INVESTOR ACCESS</div>
+    <h3 style="margin-top:13px">Investor Demo Access</h3>
+    <p class="vpl-form-help">Use the same email and password you used when registering your VYRA demo account.</p>
+    <div class="field"><label for="investorEmail">Email</label><input id="investorEmail" type="email" placeholder="you@example.com" autocomplete="email"></div>
+    <div class="field"><label for="investorPassword">Password</label><input id="investorPassword" type="password" placeholder="Your VYRA password" autocomplete="current-password"></div>
+    <div class="vyra-modal-actions"><button class="btn" onclick="closeInvestorGate()">Cancel</button><button class="btn primary" onclick="submitInvestorGate()">Enter Investor Demo</button></div>
+    <div class="note" style="margin-top:12px">Demo access uses a browser-local password hash for this prototype. It is not a production authentication system.</div>
+  </div>
+</div><div id="productFilmModal" class="product-film"><div class="film-box"><div class="film-head"><div><div class="film-overline">VYRA · THE STORY</div><h3>From disconnected tasks to one connected experience.</h3></div><button class="film-close" onclick="closeProductFilm()">×</button></div><div class="story-stage">
 <div class="story-scene story-logo-scene"><div class="story-halo"></div><div class="story-brand-lockup"><span class="logo animated-logo story-logo-icon"></span><div class="story-logo-word">VYRA</div></div><div class="story-tag">A connected training platform</div><div class="story-line">Vision · Your · Route · Ahead</div><div class="story-copy story-name-copy">A name built around one idea: give every person a clearer path forward through the training journey.</div></div>
 <div class="story-scene"><div class="story-index">01 / THE IDEA</div><div class="story-title">One clear experience for the whole training journey.</div><div class="story-copy">VYRA connects people, placements, schedules, attendance, learning, communication, requests, and feedback—so every participant can focus on the next step.</div><div class="story-flow"><span>People</span><i>→</i><span>Placement</span><i>→</i><span>Progress</span><i>→</i><span>Feedback</span></div></div>
 <div class="story-scene"><div class="story-index">02 / WHAT SETS VYRA APART</div><div class="story-title">Designed around each role—not a one-size-fits-all workspace.</div><div class="difference-grid"><div><b>Role-aware</b><span>Each person sees the work relevant to their responsibilities.</span></div><div><b>Connected</b><span>Tasks and updates stay linked across the journey.</span></div><div><b>Clear</b><span>Important actions and next steps are easier to find.</span></div></div><div class="story-radar"><i></i><i></i><i></i><i></i><strong>VYRA</strong></div></div>
@@ -629,8 +640,46 @@ body>.shell{display:none}
 body.investor-mode>#vyraPublicLanding{display:none!important}
 body.investor-mode>.shell{display:block!important}
 @media(max-width:620px){#investorBackButton{left:16px;right:16px;bottom:16px;width:calc(100% - 32px)}}
-</style><button id="investorBackButton" class="btn primary" onclick="exitInvestorDemo()">← Back to VYRA Home</button><script id="vyra-public-layer">function showInvestorDemo(){
+</style><button id="investorBackButton" class="btn primary" onclick="exitInvestorDemo()">← Back to VYRA Home</button><script id="vyra-public-layer">async function hashVyraPassword(password){
+ const data=new TextEncoder().encode(password);
+ const digest=await crypto.subtle.digest('SHA-256',data);
+ return Array.from(new Uint8Array(digest)).map(b=>b.toString(16).padStart(2,'0')).join('');
+}
+function getVyraAccounts(){
+ try{return JSON.parse(localStorage.getItem('vyraDemoAccounts')||'[]')}catch(e){return []}
+}
+function saveVyraAccount(account){
+ try{
+  const accounts=getVyraAccounts().filter(a=>a.email!==account.email);
+  accounts.push(account);
+  localStorage.setItem('vyraDemoAccounts',JSON.stringify(accounts));
+ }catch(e){}
+}
+function openInvestorGate(){
+ const m=document.getElementById('investorGateModal');
+ if(m){m.classList.add('show');m.setAttribute('aria-hidden','false');setTimeout(()=>document.getElementById('investorEmail')?.focus(),80);}
+}
+function closeInvestorGate(){
+ const m=document.getElementById('investorGateModal');
+ if(m){m.classList.remove('show');m.setAttribute('aria-hidden','true');}
+}
+async function submitInvestorGate(){
+ const email=document.getElementById('investorEmail').value.trim().toLowerCase();
+ const password=document.getElementById('investorPassword').value;
+ if(!email||!email.includes('@')||!password){toast('Enter the same email and password you used to register.');return;}
+ const account=getVyraAccounts().find(a=>a.email===email);
+ if(!account){toast('No local VYRA account was found for this email. Register first.');return;}
+ const hash=await hashVyraPassword(password);
+ if(hash!==account.passwordHash){toast('That password does not match your VYRA registration.');return;}
+ closeInvestorGate();
+ currentRole='CI';
+ currentDisplayName=account.name||'Investor';
+ showInvestorDemo();
+ toast('Investor Demo unlocked.');
+}
+function showInvestorDemo(){
  document.body.classList.add('investor-mode');
+ currentRole='CI';
  document.getElementById('vyraPublicLanding')?.setAttribute('aria-hidden','true');
  document.getElementById('investorBackButton').style.display='block';
  if(typeof previewRole==='function'){previewRole('CI');}
@@ -675,7 +724,35 @@ function previewRole(role){selectedRole=role;currentRole=role;currentStudentId=r
 function closeLogin(){document.getElementById('loginModal').classList.remove('show')}
 function renderAuthForm(){const labels={Student:'Student',Preceptor:'Preceptor','Department Supervisor':'Department Supervisor',CI:'CI · Clinical Instructor'};document.getElementById('loginHeading').textContent=(authMode==='register'?'Register as ':'Sign in as ')+labels[selectedRole];document.getElementById('loginSubtext').textContent=authMode==='register'?(selectedRole==='Student'?'Enter your details and student ID to register.':'Submit a staff access request. Permissions remain pending until verification.'):'Sign in with your approved account. Roles and permissions must be assigned by an administrator.';document.getElementById('studentIdField').classList.toggle('hidden',selectedRole!=='Student');document.getElementById('staffIdField').classList.toggle('hidden',selectedRole==='Student');document.getElementById('proofField').classList.toggle('hidden',selectedRole==='Student');document.getElementById('registrationSecurityNote').classList.toggle('hidden',authMode==='login');document.getElementById('authSubmit').textContent=authMode==='register'?(selectedRole==='Student'?'Create student account':'Submit access request'):'Continue to sign in';document.getElementById('authModeToggle').textContent=authMode==='register'?'I already have an account · Sign in':'Back to registration';document.getElementById('previewButton').classList.toggle('hidden',authMode==='register');}
 function switchAuthMode(){authMode=authMode==='register'?'login':'register';renderAuthForm();}
-function submitAuth(){const name=document.getElementById('loginName').value.trim();const email=document.getElementById('email').value.trim().toLowerCase();const password=document.getElementById('password').value;if(!email||!password||!email.includes('@')){toast('Enter a valid email and password.');return;}if(authMode==='login'){toast('Real sign-in is not enabled in this GitHub Pages preview. Use demo preview or connect secure authentication.');return;}if(!name){toast('Enter your full name.');return;}if(selectedRole==='Student'){const sid=document.getElementById('studentIdInput').value.trim();if(!sid){toast('Enter your student or training ID.');return;}currentStudentId=sid;currentRole='Student';closeLogin();enterWorkspace(name);return;}const staffId=document.getElementById('staffIdInput').value.trim();const proof=document.getElementById('proofInput').files[0];if(!staffId||!proof){toast('Work ID and role verification document are required.');return;}try{const pending=JSON.parse(localStorage.getItem('vyraPendingRoleRequests')||'[]');pending.push({name,email,role:selectedRole,staffId,proofName:proof.name,status:'Pending approval',submittedAt:new Date().toISOString()});localStorage.setItem('vyraPendingRoleRequests',JSON.stringify(pending));}catch(e){}closeLogin();toast('Your access request was saved locally as pending. Permissions are not granted until approval.');}
+async function submitAuth(){
+ const name=document.getElementById('loginName').value.trim();
+ const email=document.getElementById('email').value.trim().toLowerCase();
+ const password=document.getElementById('password').value;
+ if(!email||!password||!email.includes('@')){toast('Enter a valid email and password.');return;}
+ if(authMode==='login'){
+  const account=getVyraAccounts().find(a=>a.email===email);
+  if(!account){toast('No demo account found for this email.');return;}
+  const hash=await hashVyraPassword(password);
+  if(hash!==account.passwordHash){toast('Incorrect password.');return;}
+  currentRole=account.role||'Student'; currentStudentId=account.studentId||'VY-001';
+  closeLogin(); enterWorkspace(account.name||'Demo User'); return;
+ }
+ if(!name){toast('Enter your full name.');return;}
+ const passwordHash=await hashVyraPassword(password);
+ if(selectedRole==='Student'){
+  const sid=document.getElementById('studentIdInput').value.trim();
+  if(!sid){toast('Enter your student or training ID.');return;}
+  currentStudentId=sid;currentRole='Student';
+  saveVyraAccount({name,email,passwordHash,role:'Student',studentId:sid,createdAt:new Date().toISOString()});
+  closeLogin();enterWorkspace(name);return;
+ }
+ const staffId=document.getElementById('staffIdInput').value.trim();
+ const proof=document.getElementById('proofInput').files[0];
+ if(!staffId||!proof){toast('Work ID and role verification document are required.');return;}
+ saveVyraAccount({name,email,passwordHash,role:selectedRole,staffId,createdAt:new Date().toISOString(),status:'Pending approval'});
+ try{const pending=JSON.parse(localStorage.getItem('vyraPendingRoleRequests')||'[]');pending.push({name,email,role:selectedRole,staffId,proofName:proof.name,status:'Pending approval',submittedAt:new Date().toISOString()});localStorage.setItem('vyraPendingRoleRequests',JSON.stringify(pending));}catch(e){}
+ closeLogin();toast('Your access request was saved locally as pending. Permissions are not granted until approval.');
+}
 function previewSelectedRole(){const email=document.getElementById('email').value.trim();const name=document.getElementById('loginName').value.trim()||'Demo User';if(!email||!email.includes('@')){toast('Enter a valid demo email address.');return;}currentRole=selectedRole;currentStudentId=document.getElementById('studentIdInput').value.trim()||'VY-001';closeLogin();enterWorkspace(name);toast('Demo preview only — no real permissions or live data.');}
 function enterWorkspace(displayName){currentDisplayName=displayName;currentStudentProfile=null;document.getElementById('ciProfileName').textContent=displayName;document.getElementById('welcomeName').textContent=displayName.split(' ')[0];document.getElementById('ciProfileRole').textContent=currentRole+' · Demo preview';document.getElementById('ciProfileRole').previousElementSibling.textContent=currentRole==='Student'?'ST':currentRole==='CI'?'CI':currentRole==='Preceptor'?'PR':'DS';document.getElementById('workspace').classList.add('show');document.getElementById('studentPortal').classList.toggle('active',currentRole==='Student');document.querySelector('.ci-app:not(#studentPortal .ci-app)').classList.toggle('role-hidden',currentRole==='Student');applyRolePermissions();renderSchedule();renderStudents();renderPlacements();renderAttendance();renderLearning();renderLearningVideos();renderRequests();renderSections();renderOverviewStudents();renderReports();renderEvaluations();renderStudentPortal();showDashView('overview');scrollToId('workspace');}
 function applyRolePermissions(){const nav=document.querySelectorAll('.ci-sidebar .ci-nav');const allowed={CI:['overview','students','placements','schedule','attendance','learning','requests','reports','evaluations','sections'], 'Department Supervisor':['overview','students','placements','schedule','attendance','learning','requests','reports','evaluations','sections'],Preceptor:['overview','students','attendance','learning'],Student:[]};nav.forEach(n=>{const ok=(allowed[currentRole]||[]).includes(n.dataset.view);n.classList.toggle('role-hidden',!ok);});const title=currentRole==='CI'?'CI Dashboard':currentRole==='Department Supervisor'?'Department Supervisor Dashboard':currentRole==='Preceptor'?'Preceptor Dashboard':'Student Dashboard';document.getElementById('dashTitle').textContent=title;document.querySelector('.ci-side-brand small').textContent=currentRole.toUpperCase()+' WORKSPACE';document.querySelector('.ci-top-actions .btn.primary').classList.toggle('role-hidden',!['CI','Department Supervisor'].includes(currentRole));document.getElementById('addSectionButton')?.classList.toggle('hidden',currentRole!=='CI');document.querySelector('.ci-demo-note').textContent=currentRole==='Department Supervisor'?'DEMO · ALL DEPARTMENT STUDENTS':currentRole==='Preceptor'?'DEMO · ASSIGNED STUDENTS':'DEMO WORKSPACE · SAMPLE DATA';}

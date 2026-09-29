@@ -299,9 +299,9 @@ body{
 .film-box{width:min(1040px,100%);background:linear-gradient(155deg,#090e1c,#050812 65%,#0b1020);border-color:rgba(123,97,255,.2)}
 .film-head{padding:18px 22px}.film-overline{font-size:8px;letter-spacing:.18em;color:#7f8aaa;text-transform:uppercase;margin-bottom:5px}.film-head h3{font-size:15px;letter-spacing:-.02em}
 .story-stage{position:relative;height:570px;overflow:hidden;background:radial-gradient(circle at 50% 45%,rgba(85,231,224,.055),transparent 35%)}
-.story-scene{position:absolute;inset:0;display:grid;align-content:center;justify-items:center;padding:54px 65px;text-align:center;opacity:0;transform:translateY(25px) scale(.975);animation:storyScene 25s infinite}
-.story-scene:nth-child(1){animation-delay:0s}.story-scene:nth-child(2){animation-delay:5s}.story-scene:nth-child(3){animation-delay:10s}.story-scene:nth-child(4){animation-delay:15s}.story-scene:nth-child(5){animation-delay:20s}
-@keyframes storyScene{0%,15%{opacity:1;transform:translateY(0) scale(1)}19%,100%{opacity:0;transform:translateY(-24px) scale(.985)}}
+.story-scene{position:absolute;inset:0;display:grid;align-content:center;justify-items:center;padding:54px 65px;text-align:center;opacity:0;transform:translateY(25px) scale(.975);animation:storyScene 50s infinite}
+.story-scene:nth-child(1){animation-delay:0s}.story-scene:nth-child(2){animation-delay:10s}.story-scene:nth-child(3){animation-delay:20s}.story-scene:nth-child(4){animation-delay:30s}.story-scene:nth-child(5){animation-delay:40s}
+@keyframes storyScene{0%,18%{opacity:1;transform:translateY(0) scale(1)}20%,100%{opacity:0;transform:translateY(-24px) scale(.985)}}
 .story-halo{position:absolute;width:390px;height:390px;border-radius:50%;background:radial-gradient(circle,rgba(123,97,255,.2),rgba(85,231,224,.06) 42%,transparent 70%);animation:storyHalo 4s ease-in-out infinite}
 @keyframes storyHalo{50%{transform:scale(1.12);opacity:.82}}
 .story-brand-lockup{position:relative;display:flex;align-items:center;gap:16px}.story-logo-icon{width:90px!important;height:90px!important;border-radius:27px!important}.story-logo-word{font-size:76px;font-weight:950;letter-spacing:-.08em;background:linear-gradient(110deg,#fff,#b8adff,#6ee9e1,#ff9db8,#fff);background-size:250% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:storyGradient 4s ease-in-out infinite}
@@ -312,8 +312,8 @@ body{
 .difference-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;width:min(820px,100%);margin-top:26px}.difference-grid>div{padding:16px;border:1px solid rgba(255,255,255,.08);border-radius:15px;background:rgba(255,255,255,.025);text-align:left}.difference-grid b{display:block;font-size:12px;margin-bottom:6px}.difference-grid span{display:block;font-size:9px;color:#8996b0;line-height:1.55}
 .story-radar{position:absolute;right:8%;bottom:7%;width:100px;height:100px;border:1px solid rgba(255,255,255,.1);border-radius:50%;animation:storyRadar 12s linear infinite}.story-radar:before,.story-radar:after{content:"";position:absolute;inset:17px;border:1px solid rgba(85,231,224,.15);border-radius:50%}.story-radar:after{inset:35px;border-color:rgba(255,111,157,.15)}.story-radar i{position:absolute;width:7px;height:7px;border-radius:50%;background:#5ee8df;box-shadow:0 0 14px rgba(94,232,223,.7)}.story-radar i:nth-child(1){top:9%;left:48%}.story-radar i:nth-child(2){right:9%;top:48%;background:#ff6f9d}.story-radar i:nth-child(3){bottom:10%;left:23%;background:#ffd46b}.story-radar i:nth-child(4){left:46%;bottom:26%;background:#7b61ff}.story-radar strong{position:absolute;inset:0;display:grid;place-items:center;font-size:10px;letter-spacing:.08em}
 .feature-wall{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;width:min(860px,100%);margin-top:24px}.feature-wall>div{min-height:85px;padding:13px;border:1px solid rgba(255,255,255,.08);border-radius:14px;background:linear-gradient(145deg,rgba(123,97,255,.07),rgba(255,255,255,.02));text-align:left}.feature-wall b{display:block;color:#6fece1;font-size:8px;letter-spacing:.12em}.feature-wall strong{display:block;font-size:11px;margin:6px 0 4px}.feature-wall span{display:block;color:#8692ab;font-size:8px;line-height:1.45}
-.story-timeline{position:absolute;left:50%;bottom:20px;transform:translateX(-50%);display:flex;gap:7px;z-index:5}.story-timeline span{width:36px;height:3px;border-radius:99px;background:rgba(255,255,255,.1);overflow:hidden}.story-timeline span:after{content:"";display:block;width:0;height:100%;background:linear-gradient(90deg,#7b61ff,#5ee8df);animation:storyTimeline 5s linear infinite}.story-timeline span:nth-child(2):after{animation-delay:5s}.story-timeline span:nth-child(3):after{animation-delay:10s}.story-timeline span:nth-child(4):after{animation-delay:15s}.story-timeline span:nth-child(5):after{animation-delay:20s}@keyframes storyTimeline{to{width:100%}}
-.story-progress{width:230px;height:4px;border-radius:99px;overflow:hidden;background:rgba(255,255,255,.08)}.story-progress i{display:block;height:100%;width:20%;background:linear-gradient(90deg,#7b61ff,#55e7e0,#ff6f9d);animation:storyProgress 25s linear infinite}@keyframes storyProgress{to{width:100%}}
+.story-timeline{position:absolute;left:50%;bottom:20px;transform:translateX(-50%);display:flex;gap:7px;z-index:5}.story-timeline span{width:36px;height:3px;border-radius:99px;background:rgba(255,255,255,.1);overflow:hidden}.story-timeline span:after{content:"";display:block;width:0;height:100%;background:linear-gradient(90deg,#7b61ff,#5ee8df);animation:storyTimeline 5s linear infinite}.story-timeline span:nth-child(2):after{animation-delay:10s}.story-timeline span:nth-child(3):after{animation-delay:20s}.story-timeline span:nth-child(4):after{animation-delay:30s}.story-timeline span:nth-child(5):after{animation-delay:40s}@keyframes storyTimeline{to{width:100%}}
+.story-progress{width:230px;height:4px;border-radius:99px;overflow:hidden;background:rgba(255,255,255,.08)}.story-progress i{display:block;height:100%;width:20%;background:linear-gradient(90deg,#7b61ff,#55e7e0,#ff6f9d);animation:storyProgress 50s linear infinite}@keyframes storyProgress{to{width:100%}}
 @media(max-width:980px){.story-stage{height:530px}.story-title{font-size:32px}.feature-wall{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:620px){.story-stage{height:520px}.story-scene{padding:40px 20px}.story-title{font-size:26px}.story-copy{font-size:12px}.difference-grid,.feature-wall{grid-template-columns:1fr}.story-radar{display:none}.story-brand-lockup{flex-direction:column;gap:8px}.story-logo-icon{width:70px!important;height:70px!important;border-radius:22px!important}.story-logo-word{font-size:56px}.story-line{font-size:16px}.film-box{border-radius:18px}.film-head h3{font-size:12px}.film-foot{gap:10px}.story-progress{width:130px}}
 
@@ -333,9 +333,119 @@ body{
 .vyra-contact-btn{display:inline-flex;margin-top:13px}
 .vyra-modal-actions{display:flex;justify-content:flex-end;gap:8px;margin-top:16px}
 @media(max-width:720px){.vyra-ownership-bar{grid-template-columns:1fr}}
-.ownership-top-btn{border-color:rgba(94,245,215,.24);background:rgba(94,245,215,.06);color:#a9f3e9}.ownership-top-btn:hover{border-color:rgba(94,245,215,.48);box-shadow:0 10px 28px rgba(94,245,215,.08)}</style>
-</head>
+.ownership-top-btn{border-color:rgba(94,245,215,.24);background:rgba(94,245,215,.06);color:#a9f3e9}.ownership-top-btn:hover{border-color:rgba(94,245,215,.48);box-shadow:0 10px 28px rgba(94,245,215,.08)}
+/* ===== VYRA public ownership-first landing ===== */
+#vyraPublicLanding{min-height:100vh;position:relative;overflow:hidden;background:
+ radial-gradient(900px 560px at 10% 5%,rgba(93,140,255,.13),transparent 62%),
+ radial-gradient(760px 520px at 90% 15%,rgba(123,97,255,.16),transparent 64%),
+ radial-gradient(700px 420px at 50% 100%,rgba(85,231,224,.075),transparent 70%),#050711;color:#f7f8ff}
+.vpl-glow{position:absolute;border-radius:50%;pointer-events:none;filter:blur(8px)}
+.vpl-glow.g1{width:420px;height:420px;left:-220px;top:230px;background:radial-gradient(circle,rgba(85,231,224,.12),transparent 70%);animation:vplDrift1 11s ease-in-out infinite}
+.vpl-glow.g2{width:500px;height:500px;right:-260px;top:80px;background:radial-gradient(circle,rgba(123,97,255,.15),transparent 70%);animation:vplDrift2 13s ease-in-out infinite}
+@keyframes vplDrift1{50%{transform:translate(55px,-30px) scale(1.06)}}
+@keyframes vplDrift2{50%{transform:translate(-45px,34px) scale(1.04)}}
+.vpl-nav{position:relative;z-index:3;max-width:1240px;margin:auto;padding:20px 24px;display:flex;align-items:center;justify-content:space-between;gap:14px}
+.vpl-brand{display:flex;align-items:center;gap:11px;font-weight:900;letter-spacing:.16em}
+.vpl-brand .logo{width:44px;height:44px;border-radius:14px}
+.vpl-nav-actions{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.vpl-nav-actions .btn{font-size:10px}
+.vpl-hero{position:relative;z-index:2;max-width:1080px;margin:0 auto;padding:70px 24px 28px;text-align:center}
+.vpl-ownership{display:inline-flex;align-items:center;gap:8px;padding:9px 12px;border:1px solid rgba(94,245,215,.22);background:rgba(94,245,215,.045);border-radius:999px;color:#b8f6ed;font-size:9px;font-weight:850;letter-spacing:.12em;text-transform:uppercase}
+.vpl-ownership i{width:6px;height:6px;border-radius:50%;background:#5ef5d7;box-shadow:0 0 16px rgba(94,245,215,.8);animation:pulseDot 1.9s ease-in-out infinite}
+.vpl-title{font-size:clamp(60px,9vw,118px);line-height:.86;letter-spacing:-.085em;margin:26px auto 20px;max-width:950px}
+.vpl-gradient{background:linear-gradient(100deg,#fff 5%,#c5bdff 34%,#68e9df 63%,#ff96b4 84%,#fff 100%);background-size:260% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:heroGradient 6s ease-in-out infinite}
+.vpl-subtitle{max-width:760px;margin:0 auto;color:#aab5ca;font-size:16px;line-height:1.9}
+.vpl-orbit{width:min(70vw,250px);height:min(70vw,250px);margin:34px auto 24px;position:relative;display:grid;place-items:center}
+.vpl-orbit .core{width:92px;height:92px;border-radius:28px;background:linear-gradient(145deg,#7b61ff,#5d8cff 45%,#55e7e0 78%,#ff6f9d);box-shadow:0 26px 80px rgba(91,109,255,.28),inset 0 0 34px rgba(255,255,255,.13);position:relative;animation:corePulse 3.2s ease-in-out infinite}
+.vpl-orbit .core:before{content:'';position:absolute;inset:11px;border-radius:21px;background:#050711;clip-path:polygon(0 0,25% 0,50% 63%,75% 0,100% 0,63% 100%,37% 100%)}
+.vpl-orbit .core:after{content:'V';position:absolute;inset:0;display:grid;place-items:center;color:#fff;font-size:34px;font-weight:950;text-shadow:0 0 22px rgba(255,255,255,.4)}
+.vpl-ring{position:absolute;inset:4%;border:1px solid rgba(255,255,255,.13);border-radius:50%;animation:ringSpin 13s linear infinite}
+.vpl-ring.r2{inset:16%;border-style:dashed;border-color:rgba(85,231,224,.2);animation-duration:10s;animation-direction:reverse}
+.vpl-ring.r3{inset:30%;border-color:rgba(255,111,157,.16);animation-duration:8s}
+.vpl-dot{position:absolute;width:8px;height:8px;border-radius:50%;background:#5ef5d7;box-shadow:0 0 18px rgba(85,231,224,.9);top:7%;left:49%;animation:dotPath 5s linear infinite}
+.vpl-dot.d2{background:#ff6f9d;box-shadow:0 0 18px rgba(255,111,157,.8);top:auto;left:auto;right:13%;bottom:25%;animation-duration:7s;animation-direction:reverse}
+.vpl-cta{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-top:18px}
+.vpl-cta .btn{min-width:205px}
+.vpl-note{margin-top:18px;color:#73809a;font-size:9px;letter-spacing:.1em;text-transform:uppercase}
+.vpl-section{max-width:1080px;margin:0 auto;padding:50px 24px 24px}
+.vpl-section-head{text-align:center;max-width:760px;margin:0 auto 24px}.vpl-section-head span{font-size:9px;letter-spacing:.16em;color:#7f8cac;text-transform:uppercase}.vpl-section-head h2{font-size:clamp(28px,4vw,44px);margin:10px 0 8px;letter-spacing:-.05em}.vpl-section-head p{font-size:13px;line-height:1.8;color:#8996af;margin:0}
+.vpl-feature-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.vpl-feature{padding:20px;border:1px solid rgba(255,255,255,.08);border-radius:18px;background:linear-gradient(150deg,rgba(255,255,255,.045),rgba(255,255,255,.015));min-height:155px}.vpl-feature .icon{width:36px;height:36px;border-radius:11px;display:grid;place-items:center;background:rgba(123,97,255,.12);color:#c8bfff;margin-bottom:13px}.vpl-feature:nth-child(2) .icon{background:rgba(85,231,224,.10);color:#61ece4}.vpl-feature:nth-child(3) .icon{background:rgba(255,111,157,.10);color:#ff9eb7}.vpl-feature h3{font-size:13px;margin:0 0 7px}.vpl-feature p{font-size:10px;line-height:1.65;color:#8592aa;margin:0}
+.vpl-next{display:grid;grid-template-columns:1fr 1fr;gap:13px;align-items:stretch;margin-top:25px}
+.vpl-next-card{padding:22px;border:1px solid rgba(255,255,255,.08);border-radius:18px;background:linear-gradient(150deg,rgba(255,255,255,.04),rgba(255,255,255,.015))}
+.vpl-next-card h3{font-size:15px;margin:0 0 7px}.vpl-next-card p{font-size:10px;line-height:1.65;color:#8592aa;margin:0 0 15px}.vpl-next-card .btn{font-size:10px}
+.vpl-rights{margin-top:44px;padding:25px;border-radius:22px;border:1px solid rgba(94,245,215,.16);background:linear-gradient(145deg,rgba(94,245,215,.045),rgba(123,97,255,.055));display:grid;grid-template-columns:1.2fr .8fr;gap:15px}
+.vpl-rights h3{margin:0 0 8px;font-size:14px}.vpl-rights p{margin:0;color:#8c99b0;font-size:10px;line-height:1.75}.vpl-owner{color:#fff!important;font-size:13px!important;font-weight:850!important;margin-bottom:8px!important}.vpl-legal-label{display:inline-flex;padding:5px 8px;border-radius:999px;border:1px solid rgba(94,245,215,.18);color:#8df0e4;background:rgba(94,245,215,.05);font-size:8px;letter-spacing:.13em;text-transform:uppercase}
+.vpl-footer{max-width:1080px;margin:0 auto;padding:32px 24px 48px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;color:#74809a;font-size:9px;border-top:1px solid rgba(255,255,255,.07)}
+.vpl-footer strong{color:#fff;font-size:10px}.vpl-footer-actions{display:flex;gap:8px;flex-wrap:wrap}.vpl-footer-actions .btn{font-size:9px;padding:8px 10px}
+.vpl-modal .modalbox{width:min(520px,100%);background:linear-gradient(155deg,#0b1120,#070b14 65%);border-color:rgba(123,97,255,.2)}
+.vpl-form-help{font-size:10px;color:#8390aa;line-height:1.55;margin:6px 0 14px}
+@media(max-width:760px){.vpl-nav{padding:15px 16px}.vpl-nav-actions .btn:not(.primary){display:none}.vpl-hero{padding-top:46px}.vpl-subtitle{font-size:14px}.vpl-feature-grid,.vpl-next,.vpl-rights{grid-template-columns:1fr}.vpl-rights{padding:18px}.vpl-orbit{margin-top:28px}.vpl-title{font-size:57px}}
+</style>
+<style>
+/* Keep the existing platform workspace/source in the repository, but make the public website landing the first-facing experience. */
+body>.shell{display:none}
+</style></head>
 <body>
+<div id="vyraPublicLanding">
+  <div class="vpl-glow g1"></div><div class="vpl-glow g2"></div>
+  <nav class="vpl-nav">
+    <div class="vpl-brand"><span class="logo animated-logo"></span><span>VYRA</span></div>
+    <div class="vpl-nav-actions">
+      <button class="btn" onclick="document.getElementById('vplRights')?.scrollIntoView({behavior:'smooth',block:'start'})">© Ownership</button>
+      <button class="btn" onclick="openVyraPublicContact()">Contact</button>
+      <button class="btn primary" onclick="openProductFilm()">Start With Us</button>
+    </div>
+  </nav>
+
+  <section class="vpl-hero">
+    <div class="vpl-ownership"><i></i> CREATED, OWNED &amp; OPERATED BY NAWAF KHALED ALMUTAIRI</div>
+    <h1 class="vpl-title">The training experience.<br><span class="vpl-gradient">Reimagined.</span></h1>
+    <p class="vpl-subtitle">VYRA is a connected platform designed to bring people, placements, schedules, attendance, learning, communication, requests, and feedback into one clear experience.</p>
+    <div class="vpl-orbit"><span class="vpl-ring"></span><span class="vpl-ring r2"></span><span class="vpl-ring r3"></span><span class="vpl-dot"></span><span class="vpl-dot d2"></span><span class="core"></span></div>
+    <div class="vpl-cta">
+      <button class="btn primary" onclick="openProductFilm()">▶ Start With Us</button>
+      <button class="btn" onclick="document.getElementById('vplMore')?.scrollIntoView({behavior:'smooth',block:'start'})">Learn More</button>
+    </div>
+    <div class="vpl-note">Watch the VYRA product story · 50 seconds</div>
+  </section>
+
+  <section id="vplMore" class="vpl-section">
+    <div class="vpl-section-head">
+      <span>One connected idea</span>
+      <h2>Everything important, in one place.</h2>
+      <p>VYRA reduces scattered work into one focused journey—simple enough to understand, structured enough to support real workflows.</p>
+    </div>
+    <div class="vpl-feature-grid">
+      <article class="vpl-feature"><div class="icon">◈</div><h3>Connected Workflow</h3><p>Bring placements, schedules, attendance, learning, communication, and feedback into one connected flow.</p></article>
+      <article class="vpl-feature"><div class="icon">✦</div><h3>Role-Aware Experience</h3><p>Give each participant the information and actions relevant to their responsibilities.</p></article>
+      <article class="vpl-feature"><div class="icon">↗</div><h3>Clear Next Steps</h3><p>Surface the right information at the right moment so teams can move forward with clarity.</p></article>
+    </div>
+    <div class="vpl-next">
+      <article class="vpl-next-card"><h3>Want more information?</h3><p>Ask about the platform, collaboration, licensing, or how VYRA can fit your organization.</p><button class="btn" onclick="openVyraPublicContact()">Contact VYRA</button></article>
+      <article class="vpl-next-card"><h3>Interested in VYRA?</h3><p>Register your interest and we can keep your details for future product updates or follow-up.</p><button class="btn primary" onclick="openVyraInterest()">Register Interest</button></article>
+    </div>
+
+    <section id="vplRights" class="vpl-rights">
+      <div>
+        <span class="vpl-legal-label">Ownership &amp; Rights</span>
+        <h3 style="margin-top:11px">VYRA™ — Original Work &amp; Proprietary Materials</h3>
+        <p class="vpl-owner">© 2026 Nawaf Khaled Almutairi. All Rights Reserved.</p>
+        <p><strong>VYRA™ is owned and operated by Nawaf Khaled Almutairi.</strong> The original website content, software, source code, interface designs, graphics, branding, text, and proprietary materials presented on this website are protected by applicable intellectual property laws. Unauthorized copying, reproduction, modification, distribution, publication, or commercial use is prohibited without prior written permission from the owner.</p>
+      </div>
+      <div>
+        <span class="vpl-legal-label">Owner</span>
+        <h3 style="margin-top:11px">Nawaf Khaled Almutairi</h3>
+        <p>VYRA is presented and operated under the ownership of Nawaf Khaled Almutairi. This notice identifies the owner of the original VYRA materials displayed on this website.</p>
+      </div>
+    </section>
+  </section>
+
+  <footer class="vpl-footer">
+    <div><strong>VYRA™</strong><div style="margin-top:6px">© 2026 Nawaf Khaled Almutairi · All Rights Reserved.</div></div>
+    <div class="vpl-footer-actions"><button class="btn" onclick="document.getElementById('vplRights')?.scrollIntoView({behavior:'smooth',block:'start'})">Ownership &amp; Rights</button><button class="btn primary" onclick="openVyraPublicContact()">Contact VYRA</button></div>
+  </footer>
+</div>
+
 <div class="shell">
   <header class="top"><div class="nav"><button class="brand brand-logo-link" type="button" onclick="openRoleChoices()" aria-label="Open VYRA registration options"><span class="logo animated-logo"></span><span>VYRA</span><small style="color:var(--muted);font-weight:600;letter-spacing:0"></small></button><nav class="links"><a href="#home">Home</a><a href="#homeFeatures">Why VYRA</a><a href="#home" onclick="openProductFilm();return false">Watch the VYRA story</a><a href="#home" onclick="openRoleChoices();return false">Get started</a></nav><button class="btn" onclick="openProductFilm()">▶ Watch the VYRA story</button><button class="btn ownership-top-btn" onclick="document.getElementById('vyra-rights')?.scrollIntoView({behavior:'smooth',block:'start'})">© Ownership</button><button class="btn primary" onclick="openRoleChoices()">Get started</button></div></header>
   <main>
@@ -461,12 +571,38 @@ body{
   </main>
   <footer class="foot"><div class="container"><div style="display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;align-items:center"><span>VYRA — Training operations platform prototype. Demo records are illustrative and stay in this browser session.</span><span>© 2026 Nkhalmutairi · All rights reserved.</span></div></div></footer>
 </div>
+
+<div id="vyraPublicContactModal" class="modal vpl-modal" aria-hidden="true">
+  <div class="modalbox">
+    <button class="close" onclick="closeVyraPublicContact()" aria-label="Close">×</button>
+    <div class="eyebrow">VYRA · CONTACT</div>
+    <h3 style="margin-top:13px">Contact VYRA</h3>
+    <p class="vpl-form-help">Use this form for partnerships, product questions, licensing, or general enquiries.</p>
+    <div class="field"><label for="vplContactName">Name</label><input id="vplContactName" placeholder="Your name"></div>
+    <div class="field"><label for="vplContactEmail">Email</label><input id="vplContactEmail" type="email" placeholder="you@example.com"></div>
+    <div class="field"><label for="vplContactMessage">Message</label><input id="vplContactMessage" placeholder="How can we help?"></div>
+    <div class="vyra-modal-actions"><button class="btn" onclick="closeVyraPublicContact()">Cancel</button><button class="btn primary" onclick="submitVyraPublicContact()">Send</button></div>
+  </div>
+</div>
+<div id="vyraInterestModal" class="modal vpl-modal" aria-hidden="true">
+  <div class="modalbox">
+    <button class="close" onclick="closeVyraInterest()" aria-label="Close">×</button>
+    <div class="eyebrow">VYRA · INTEREST</div>
+    <h3 style="margin-top:13px">Register Your Interest</h3>
+    <p class="vpl-form-help">Leave your details so the VYRA team can follow up when the product is ready for the next step.</p>
+    <div class="field"><label for="vplInterestName">Name</label><input id="vplInterestName" placeholder="Your name"></div>
+    <div class="field"><label for="vplInterestEmail">Email</label><input id="vplInterestEmail" type="email" placeholder="you@example.com"></div>
+    <div class="field"><label for="vplInterestOrg">Organization</label><input id="vplInterestOrg" placeholder="Organization (optional)"></div>
+    <div class="vyra-modal-actions"><button class="btn" onclick="closeVyraInterest()">Cancel</button><button class="btn primary" onclick="submitVyraInterest()">Register Interest</button></div>
+  </div>
+</div>
+
 <div id="productFilmModal" class="product-film"><div class="film-box"><div class="film-head"><div><div class="film-overline">VYRA · THE STORY</div><h3>From disconnected tasks to one connected experience.</h3></div><button class="film-close" onclick="closeProductFilm()">×</button></div><div class="story-stage">
 <div class="story-scene story-logo-scene"><div class="story-halo"></div><div class="story-brand-lockup"><span class="logo animated-logo story-logo-icon"></span><div class="story-logo-word">VYRA</div></div><div class="story-tag">A connected training platform</div><div class="story-line">Vision · Your · Route · Ahead</div><div class="story-copy story-name-copy">A name built around one idea: give every person a clearer path forward through the training journey.</div></div>
 <div class="story-scene"><div class="story-index">01 / THE IDEA</div><div class="story-title">One clear experience for the whole training journey.</div><div class="story-copy">VYRA connects people, placements, schedules, attendance, learning, communication, requests, and feedback—so every participant can focus on the next step.</div><div class="story-flow"><span>People</span><i>→</i><span>Placement</span><i>→</i><span>Progress</span><i>→</i><span>Feedback</span></div></div>
 <div class="story-scene"><div class="story-index">02 / WHAT SETS VYRA APART</div><div class="story-title">Designed around each role—not a one-size-fits-all workspace.</div><div class="difference-grid"><div><b>Role-aware</b><span>Each person sees the work relevant to their responsibilities.</span></div><div><b>Connected</b><span>Tasks and updates stay linked across the journey.</span></div><div><b>Clear</b><span>Important actions and next steps are easier to find.</span></div></div><div class="story-radar"><i></i><i></i><i></i><i></i><strong>VYRA</strong></div></div>
 <div class="story-scene"><div class="story-index">03 / THE FEATURES</div><div class="story-title">Everything important, working together.</div><div class="feature-wall"><div><b>01</b><strong>Placements</strong><span>Sections, buildings, assignments</span></div><div><b>02</b><strong>Schedules</strong><span>Clear weekly shift views</span></div><div><b>03</b><strong>Attendance</strong><span>Check-in and check-out</span></div><div><b>04</b><strong>Learning</strong><span>Readiness and progress</span></div><div><b>05</b><strong>Requests</strong><span>Leave and schedule support</span></div><div><b>06</b><strong>Feedback</strong><span>Evaluation and follow-up</span></div></div></div>
-<div class="story-scene"><div class="story-index">04 / THE NEXT STEP</div><div class="story-title">Make every step matter.</div><div class="story-copy">Students, Preceptors, Clinical Instructors, and Department Supervisors can move through one connected VYRA experience.</div><div style="margin-top:24px"><button class="btn primary" onclick="closeProductFilm();openRoleChoices()">Explore your VYRA role →</button></div></div>
+<div class="story-scene"><div class="story-index">04 / THE NEXT STEP</div><div class="story-title">Make every step matter.</div><div class="story-copy">Learn more, connect with VYRA, or register your interest for the next stage.</div><div style="display:flex;gap:9px;flex-wrap:wrap;justify-content:center;margin-top:24px"><button class="btn primary" onclick="closeProductFilm();openVyraPublicContact()">Contact VYRA</button><button class="btn" onclick="closeProductFilm();openVyraInterest()">Register Interest</button></div></div>
 <div class="story-timeline"><span></span><span></span><span></span><span></span><span></span></div></div><div class="film-foot"><span>Animated product story · loops automatically</span><span class="story-progress"><i></i></span></div></div></div><div id="roleChoiceModal" class="modal role-choice-modal"><div class="modalbox"><button class="close" onclick="closeRoleChoices()">×</button><div class="eyebrow">VYRA</div><h3 style="margin-top:14px">Choose your path</h3><p class="note">Register for a role, or preview the interface using safe demo access.</p><div class="role-choice-grid">
   <div class="role-choice"><div class="role-icon">♙</div><h4>Student</h4><p>Schedule, attendance, requests, learning and CI communication.</p><button class="btn primary" style="margin-top:13px;width:100%" onclick="closeRoleChoices();openRegistration('Student')">Register as Student</button><button class="btn" style="margin-top:7px;width:100%" onclick="previewRole('Student')">Preview Student</button></div>
   <div class="role-choice"><div class="role-icon">✚</div><h4>Preceptor</h4><p>Support assigned students and contribute to learning follow-up.</p><button class="btn primary" style="margin-top:13px;width:100%" onclick="closeRoleChoices();openRegistration('Preceptor')">Register as Preceptor</button><button class="btn" style="margin-top:7px;width:100%" onclick="previewRole('Preceptor')">Preview Preceptor</button></div>
@@ -486,6 +622,25 @@ body{
   <button class="btn" id="previewButton" style="width:100%;margin-top:9px" onclick="previewSelectedRole()">Preview interface only (demo data)</button>
   <div class="note" style="margin-top:12px">This GitHub Pages version is for preview only. Passwords are not stored; real identity and permission checks require secure authentication and a database.</div>
 </div></div><div id="toast" class="toast"></div>
+
+<script id="vyra-public-layer">
+function openVyraPublicContact(){const m=document.getElementById('vyraPublicContactModal');if(m){m.classList.add('show');m.setAttribute('aria-hidden','false');}}
+function closeVyraPublicContact(){const m=document.getElementById('vyraPublicContactModal');if(m){m.classList.remove('show');m.setAttribute('aria-hidden','true');}}
+function submitVyraPublicContact(){
+ const n=document.getElementById('vplContactName').value.trim(),e=document.getElementById('vplContactEmail').value.trim(),m=document.getElementById('vplContactMessage').value.trim();
+ if(!n||!e||!m||!e.includes('@')){alert('Please complete your name, email, and message.');return;}
+ try{const a=JSON.parse(localStorage.getItem('vyraPublicContact')||'[]');a.push({name:n,email:e,message:m,createdAt:new Date().toISOString()});localStorage.setItem('vyraPublicContact',JSON.stringify(a));}catch(err){}
+ closeVyraPublicContact();alert('Thank you. Your enquiry has been recorded in this browser session.');
+}
+function openVyraInterest(){const m=document.getElementById('vyraInterestModal');if(m){m.classList.add('show');m.setAttribute('aria-hidden','false');}}
+function closeVyraInterest(){const m=document.getElementById('vyraInterestModal');if(m){m.classList.remove('show');m.setAttribute('aria-hidden','true');}}
+function submitVyraInterest(){
+ const n=document.getElementById('vplInterestName').value.trim(),e=document.getElementById('vplInterestEmail').value.trim(),o=document.getElementById('vplInterestOrg').value.trim();
+ if(!n||!e||!e.includes('@')){alert('Please enter your name and a valid email.');return;}
+ try{const a=JSON.parse(localStorage.getItem('vyraPublicInterest')||'[]');a.push({name:n,email:e,organization:o,createdAt:new Date().toISOString()});localStorage.setItem('vyraPublicInterest',JSON.stringify(a));}catch(err){}
+ closeVyraInterest();alert('Thank you. Your interest has been registered in this browser session.');
+}
+</script>
 <script id="vyra-app-script">
 const esc=s=>String(s??'').replace(/[&<>\"]/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[m]));
 function scrollToId(id){const el=document.getElementById(id);if(!el)return;if(id==='homeFeatures'){const preview=document.getElementById('rolePreview');if(preview)preview.style.display='grid';const note=document.getElementById('rolePreviewNote');if(note)note.style.display='block';}el.scrollIntoView({behavior:'smooth'});}

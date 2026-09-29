@@ -392,6 +392,7 @@ body>.shell{display:none}
     <div class="vpl-brand"><span class="logo animated-logo"></span><span>VYRA</span></div>
     <div class="vpl-nav-actions">
       <button class="btn" onclick="document.getElementById('vplRights')?.scrollIntoView({behavior:'smooth',block:'start'})">© Ownership</button>
+      <button class="btn" onclick="showInvestorDemo()">Investor Demo</button>
       <button class="btn" onclick="openVyraPublicContact()">Contact</button>
       <button class="btn primary" onclick="openProductFilm()">Start With Us</button>
     </div>
@@ -406,7 +407,7 @@ body>.shell{display:none}
       <button class="btn primary" onclick="openProductFilm()">▶ Start With Us</button>
       <button class="btn" onclick="document.getElementById('vplMore')?.scrollIntoView({behavior:'smooth',block:'start'})">Learn More</button>
     </div>
-    <div class="vpl-note">Watch the VYRA product story · 50 seconds</div>
+    <div class="vpl-note">Product story · 50 seconds · Investor-ready demo</div>
   </section>
 
   <section id="vplMore" class="vpl-section">
@@ -623,7 +624,25 @@ body>.shell{display:none}
   <div class="note" style="margin-top:12px">This GitHub Pages version is for preview only. Passwords are not stored; real identity and permission checks require secure authentication and a database.</div>
 </div></div><div id="toast" class="toast"></div>
 
-<script id="vyra-public-layer">
+<style>
+#investorBackButton{display:none;position:fixed;right:20px;bottom:20px;z-index:650;border:1px solid rgba(94,245,215,.25);box-shadow:0 18px 48px rgba(0,0,0,.35)}
+body.investor-mode>#vyraPublicLanding{display:none!important}
+body.investor-mode>.shell{display:block!important}
+@media(max-width:620px){#investorBackButton{left:16px;right:16px;bottom:16px;width:calc(100% - 32px)}}
+</style><button id="investorBackButton" class="btn primary" onclick="exitInvestorDemo()">← Back to VYRA Home</button><script id="vyra-public-layer">function showInvestorDemo(){
+ document.body.classList.add('investor-mode');
+ document.getElementById('vyraPublicLanding')?.setAttribute('aria-hidden','true');
+ document.getElementById('investorBackButton').style.display='block';
+ if(typeof previewRole==='function'){previewRole('CI');}
+ else {const s=document.getElementById('workspace');if(s){s.classList.add('show');s.scrollIntoView({behavior:'smooth'});}}
+}
+function exitInvestorDemo(){
+ document.body.classList.remove('investor-mode');
+ document.getElementById('vyraPublicLanding')?.setAttribute('aria-hidden','false');
+ document.getElementById('investorBackButton').style.display='none';
+ window.scrollTo({top:0,behavior:'smooth'});
+}
+
 function openVyraPublicContact(){const m=document.getElementById('vyraPublicContactModal');if(m){m.classList.add('show');m.setAttribute('aria-hidden','false');}}
 function closeVyraPublicContact(){const m=document.getElementById('vyraPublicContactModal');if(m){m.classList.remove('show');m.setAttribute('aria-hidden','true');}}
 function submitVyraPublicContact(){

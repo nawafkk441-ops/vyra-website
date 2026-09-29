@@ -603,7 +603,7 @@ body>.shell{display:none}
     <button class="close" onclick="closeInvestorGate()" aria-label="Close">×</button>
     <div class="eyebrow">VYRA · INVESTOR ACCESS</div>
     <h3 style="margin-top:13px">Investor Demo Access</h3>
-    <p class="vpl-form-help">Use the same email and password you used when registering your VYRA demo account.</p>
+    <p class="vpl-form-help">Use the same email and password you use for your VYRA demo access. On first access from this browser, the demo credentials will be linked locally.</p>
     <div class="field"><label for="investorEmail">Email</label><input id="investorEmail" type="email" placeholder="you@example.com" autocomplete="email"></div>
     <div class="field"><label for="investorPassword">Password</label><input id="investorPassword" type="password" placeholder="Your VYRA password" autocomplete="current-password"></div>
     <div class="vyra-modal-actions"><button class="btn" onclick="closeInvestorGate()">Cancel</button><button class="btn primary" onclick="submitInvestorGate()">Enter Investor Demo</button></div>
@@ -667,10 +667,16 @@ async function submitInvestorGate(){
  const email=document.getElementById('investorEmail').value.trim().toLowerCase();
  const password=document.getElementById('investorPassword').value;
  if(!email||!email.includes('@')||!password){toast('Enter the same email and password you used to register.');return;}
- const account=getVyraAccounts().find(a=>a.email===email);
- if(!account){toast('No local VYRA account was found for this email. Register first.');return;}
+ let account=getVyraAccounts().find(a=>a.email===email);
  const hash=await hashVyraPassword(password);
- if(hash!==account.passwordHash){toast('That password does not match your VYRA registration.');return;}
+ if(!account){
+  saveVyraAccount({name:'VYRA Account',email,passwordHash:hash,role:'CI',createdAt:new Date().toISOString(),status:'Demo-linked'});
+  account=getVyraAccounts().find(a=>a.email===email);
+  toast('This browser has been linked to your VYRA demo credentials.');
+ }else if(hash!==account.passwordHash){
+  toast('That password does not match this VYRA account.');
+  return;
+ }
  closeInvestorGate();
  currentRole='CI';
  currentDisplayName=account.name||'Investor';

@@ -322,6 +322,17 @@ body{
 
 .story-name-copy{max-width:600px;font-size:11px;line-height:1.75;color:#7f8ca6;margin-top:12px}.story-logo-scene .story-line{font-size:22px;font-weight:750;letter-spacing:-.02em;background:linear-gradient(90deg,#fff,#c7bfff,#61e8dd,#ff9db5);-webkit-background-clip:text;background-clip:text;color:transparent;background-size:220% 100%;animation:storyGradient 4s ease-in-out infinite}
 @media(max-width:620px){.story-logo-scene .story-line{font-size:17px}.story-name-copy{font-size:10px}}
+
+/* VYRA ownership + contact */
+.vyra-ownership-bar{margin-top:30px;padding:22px;border:1px solid rgba(117,87,255,.24);border-radius:20px;background:linear-gradient(120deg,rgba(117,87,255,.10),rgba(93,225,230,.045));display:grid;grid-template-columns:1.25fr .75fr;gap:14px;align-items:stretch}
+.vyra-legal-card,.vyra-contact-card{border:1px solid var(--line);border-radius:16px;padding:18px;background:rgba(0,0,0,.14)}
+.vyra-legal-card h3,.vyra-contact-card h3{margin:0 0 7px;font-size:14px}
+.vyra-legal-card p,.vyra-contact-card p{margin:0;color:var(--muted);font-size:11px;line-height:1.65}
+.vyra-owner{display:block;color:#fff;font-weight:850;letter-spacing:.02em;margin:8px 0}
+.vyra-owner-tag{display:inline-flex;padding:5px 8px;border-radius:999px;background:rgba(93,225,230,.10);color:#8ce9ea;border:1px solid rgba(93,225,230,.15);font-size:9px;font-weight:800;letter-spacing:.08em;text-transform:uppercase}
+.vyra-contact-btn{display:inline-flex;margin-top:13px}
+.vyra-modal-actions{display:flex;justify-content:flex-end;gap:8px;margin-top:16px}
+@media(max-width:720px){.vyra-ownership-bar{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -570,6 +581,66 @@ function rotateBlurb(){const el=document.getElementById('blurbText');if(!el)retu
 setInterval(rotateBlurb,4200);
 renderSections();
 </script>
+
+<script>
+function openVyraContact(){const m=document.getElementById('vyraContactModal');if(!m)return;m.classList.add('show');m.setAttribute('aria-hidden','false');}
+function closeVyraContact(){const m=document.getElementById('vyraContactModal');if(!m)return;m.classList.remove('show');m.setAttribute('aria-hidden','true');}
+function submitVyraContact(){
+ const name=document.getElementById('vyraContactName').value.trim();
+ const email=document.getElementById('vyraContactEmail').value.trim();
+ const message=document.getElementById('vyraContactMessage').value.trim();
+ if(!name||!email||!message){toast('Please complete all contact fields.');return;}
+ toast('Your message is ready. An official contact destination can be connected here.');
+ closeVyraContact();
+ document.getElementById('vyraContactName').value='';
+ document.getElementById('vyraContactEmail').value='';
+ document.getElementById('vyraContactMessage').value='';
+}
+</script>
+
+
+<section class="container vyra-ownership-bar" aria-label="VYRA ownership and contact">
+  <article class="vyra-legal-card" id="vyra-rights">
+    <span class="vyra-owner-tag">Ownership &amp; Rights</span>
+    <span class="vyra-owner">© 2026 Nawaf Khaled Almutairi. All Rights Reserved.</span>
+    <p><strong>VYRA™ is owned and operated by Nawaf Khaled Almutairi.</strong> All original website content, software, source code, interface designs, graphics, branding, text, and proprietary materials are protected by applicable intellectual property laws. Unauthorized copying, reproduction, modification, distribution, publication, or commercial use is prohibited without prior written permission from the owner.</p>
+  </article>
+  <article class="vyra-contact-card" id="vyra-contact">
+    <span class="vyra-owner-tag">Contact VYRA</span>
+    <h3>Talk to the VYRA team</h3>
+    <p>For partnerships, product enquiries, licensing, or ownership matters, use the contact form.</p>
+    <button class="btn primary vyra-contact-btn" onclick="openVyraContact()">Contact Us</button>
+  </article>
+</section>
+
+<footer class="foot" id="vyra-footer">
+  <div class="container" style="display:flex;justify-content:space-between;gap:18px;align-items:center;flex-wrap:wrap">
+    <div>
+      <strong style="color:#fff">VYRA™</strong>
+      <div style="margin-top:6px">© 2026 Nawaf Khaled Almutairi · All Rights Reserved.</div>
+    </div>
+    <div style="display:flex;gap:8px;flex-wrap:wrap">
+      <a class="btn" href="#vyra-rights">Ownership &amp; Rights</a>
+      <button class="btn" onclick="openVyraContact()">Contact VYRA</button>
+    </div>
+  </div>
+</footer>
+
+<div class="modal" id="vyraContactModal" aria-hidden="true">
+  <div class="modalbox">
+    <button class="close" onclick="closeVyraContact()" aria-label="Close">×</button>
+    <h3>Contact VYRA</h3>
+    <p class="note">Send your enquiry to the VYRA owner.</p>
+    <div class="field"><label for="vyraContactName">Name</label><input id="vyraContactName" placeholder="Your name"></div>
+    <div class="field"><label for="vyraContactEmail">Email</label><input id="vyraContactEmail" type="email" placeholder="you@example.com"></div>
+    <div class="field"><label for="vyraContactMessage">Message</label><input id="vyraContactMessage" placeholder="How can we help?"></div>
+    <div class="vyra-modal-actions">
+      <button class="btn" onclick="closeVyraContact()">Cancel</button>
+      <button class="btn primary" onclick="submitVyraContact()">Send</button>
+    </div>
+  </div>
+</div>
+
 <script id="vyra-supabase-sdk" src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="supabase-config.js"></script>
 <script src="live.js"></script>
